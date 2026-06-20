@@ -1,6 +1,0 @@
--cp source
--main Renderer
--js dist/renderer.js
--D js-es=6
--D analyzer-optimize
-

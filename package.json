@@ -5,7 +5,8 @@
   "main": "dist/main.js",
   "private": true,
   "scripts": {
-    "build": "haxe -lib hxp -cp source/tasks --run Build",
+    "build": "haxelib run hxp build",
+    "clean": "haxelib run hxp clean",
     "start": "npm run build && electron .",
     "dev": "npm run build && electron . --enable-logging"
   },

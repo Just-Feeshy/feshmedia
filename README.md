@@ -2,8 +2,9 @@
 
 A small desktop starter built with Haxe, [HXP](https://lib.haxe.org/p/hxp/),
 [hxelectron](https://github.com/tong/hxelectron), Electron, and
-[HMM](https://github.com/andywhite37/hmm). All Haxe code, including the HXP
-build task, lives in `source/`.
+[HMM](https://github.com/andywhite37/hmm). The application code lives in
+`source/`, and the build is described by a single `Project.hxp` script at the
+project root.
 
 ## Prerequisites
 
@@ -32,27 +33,27 @@ Haxe library versions declared in `hmm.json`.
 
 ```sh
 npm run build   # compile main and renderer Haxe targets into dist/
+npm run clean   # remove the generated dist/ output
 npm start       # build and launch Electron
 npm run dev     # same as start, with Electron logging enabled
 ```
 
-You can invoke the HXP build directly as well:
+You can invoke the HXP build directly as well. `haxelib run hxp` discovers the
+`Project.hxp` script automatically and dispatches on the command name:
 
 ```sh
-haxelib run hxp source/tasks/Build.hx
+haxelib run hxp         # build everything (default)
+haxelib run hxp build   # same as above
+haxelib run hxp clean   # remove dist/
 ```
-
-The npm build invokes the same `Build` class through Haxe's interpreter. This
-avoids depending on a platform-specific precompiled Neko launcher while still
-using HXP's script API.
 
 ## Layout
 
 ```text
+Project.hxp        HXP build script (targets + asset copy)
 source/
   Main.hx          Electron main process
   Renderer.hx      Browser renderer
-  tasks/Build.hx   HXP build task
 public/            HTML and CSS copied into dist/
 dist/              Generated application output
 hmm.json           Project-local Haxelib dependencies

@@ -1,0 +1,95 @@
+package;
+
+import hxp.HXML;
+import hxp.Log;
+import hxp.Script;
+import hxp.System;
+import sys.FileSystem;
+
+/**
+	HXP build script for Feshmedia. Run with `haxelib run hxp`, which discovers
+	this `Project.hxp` automatically and dispatches on the command name:
+
+		haxelib run hxp          # build everything (default)
+		haxelib run hxp build    # same as above
+		haxelib run hxp clean    # remove the dist/ output
+
+	Replaces the previous `source/tasks/Build.hx` task and the standalone
+	`build-main.hxml` / `build-renderer.hxml` files: the Haxe targets are now
+	described inline through HXP's `HXML` builder.
+**/
+class Project extends Script
+{
+	public function new()
+	{
+		super();
+
+		// HXP executes scripts from their containing directory. Restore the
+		// project directory so every build path stays relative to the root.
+		Sys.setCwd(workingDirectory);
+
+		switch (command)
+		{
+			case "clean":
+				clean();
+			case "build", "default", "", null:
+				build();
+			default:
+				Log.error('Unknown command "$command". Use "build" or "clean".');
+		}
+	}
+
+	private function build():Void
+	{
+		clean();
+		System.makeDirectory("dist");
+
+		compile(mainTarget());
+		compile(rendererTarget());
+
+		System.recursiveCopy("public", "dist");
+
+		Sys.println("Built dist/main.js, dist/renderer.js, and static assets.");
+	}
+
+	private function mainTarget():HXML
+	{
+		var hxml = new HXML();
+		hxml.cp("source");
+		hxml.main = "Main";
+		hxml.lib("electron");
+		hxml.lib("hxnodejs");
+		hxml.js = "dist/main.js";
+		hxml.define("js-es", 6);
+		hxml.define("analyzer-optimize");
+		return hxml;
+	}
+
+	private function rendererTarget():HXML
+	{
+		var hxml = new HXML();
+		hxml.cp("source");
+		hxml.main = "Renderer";
+		hxml.js = "dist/renderer.js";
+		hxml.define("js-es", 6);
+		hxml.define("analyzer-optimize");
+		return hxml;
+	}
+
+	private function compile(hxml:HXML):Void
+	{
+		var result = hxml.build();
+		if (result != 0)
+		{
+			Sys.exit(result);
+		}
+	}
+
+	private function clean():Void
+	{
+		if (FileSystem.exists("dist"))
+		{
+			System.removeDirectory("dist");
+		}
+	}
+}

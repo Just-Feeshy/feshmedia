@@ -1,8 +1,0 @@
--cp source
--main Main
--lib electron
--lib hxnodejs
--js dist/main.js
--D js-es=6
--D analyzer-optimize
-
