@@ -1,39 +1,81 @@
 @import "tailwindcss";
 
-/* Scan the renderer markup for class usage. */
+/* Scan generated HTML and the Haxe renderer sources for class usage. The
+   renderer builds the DOM in code, so the class strings live in source/. */
 @source "../public/index.html";
+@source "../source";
 
-/* Design tokens — exposed as Tailwind utilities (bg-*, text-*, border-*). */
-@theme {
-    --color-base: #07111f;
-    --color-surface: #0b1728;
-    --color-panel: rgb(8 21 36 / 0.72);
+/* ── Semantic theme variables ──────────────────────────────────────────
+   Light by default; the `.dark` class on <html> swaps them. Inline styles
+   in the renderer also reference these vars (var(--card) etc.), so both the
+   Tailwind utilities and the hand-written colors follow the active theme. */
+:root {
+    color-scheme: light;
+    --background: #f5f3ff;
+    --foreground: #1e1633;
+    --card: #ffffff;
+    --popover: #ffffff;
+    --muted: #efebfa;
+    --muted-foreground: #6b6286;
+    --border: rgb(138 63 217 / 0.18);
+    --chrome: rgb(255 255 255 / 0.9);
+    --switch: #d4caee;
+}
 
-    --color-ink: #f2f6fa;
-    --color-ink-on-accent: #06110e;
+.dark {
+    color-scheme: dark;
+    --background: #0b0620;
+    --foreground: #e2d9ff;
+    --card: #140b2e;
+    --popover: #1a1040;
+    --muted: #1a1040;
+    --muted-foreground: #8b7ab8;
+    --border: rgb(138 63 217 / 0.25);
+    --chrome: rgb(11 6 32 / 0.95);
+    --switch: #2d1a60;
+}
 
-    --color-muted: #9eb0c4;
-    --color-subtle: #7f93aa;
-    --color-faint: #778da5;
-    --color-footer: #526b83;
+/* ── Tailwind tokens → semantic vars ────────────────────────────────────
+   `inline` so utilities emit var() references that resolve per theme.
+   The brand palette (primary/accent) is identical in both themes. */
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-popover: var(--popover);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-border: var(--border);
 
-    --color-accent: #43e0b5;
-    --color-accent-strong: #70edca;
+    --color-primary: #00e5ff;
+    --color-primary-foreground: #0b0620;
+    --color-accent: #e040fb;
+    --color-accent-foreground: #0b0620;
+    --color-destructive: #ff4060;
+    --color-ring: #00e5ff;
 
     --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+    --font-display: "Exo 2", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 @layer base {
     html {
-        color-scheme: dark;
         font-synthesis: none;
+        font-size: 14px;
     }
 
     body {
-        background:
-            radial-gradient(circle at 20% 15%, rgb(51 219 173 / 0.14), transparent 32rem),
-            linear-gradient(135deg, #07111f 0%, #0b1728 100%);
+        background: var(--background);
+        color: var(--foreground);
+    }
+
+    /* Hide scrollbars in scroll regions (matches scrollbarWidth: none). */
+    .no-scrollbar {
+        scrollbar-width: none;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
     }
 }

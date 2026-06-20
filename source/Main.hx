@@ -26,11 +26,11 @@ class Main {
         var rendererLoaded = false;
 
         mainWindow = new BrowserWindow({
-            width: 1040,
-            height: 700,
+            width: 1280,
+            height: 720,
             minWidth: 760,
             minHeight: 520,
-            backgroundColor: "#07111f",
+            backgroundColor: "#0B0620",
             show: false,
             webPreferences: {
                 contextIsolation: true,

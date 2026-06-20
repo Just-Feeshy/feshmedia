@@ -53,12 +53,30 @@ haxelib run hxp clean   # remove dist/
 Project.hxp        HXP build script (targets + asset copy)
 source/
   Main.hx          Electron main process
-  Renderer.hx      Browser renderer
+  Renderer.hx      Browser renderer entry (boots app.App into #app)
+  app/
+    Dom.hx         Tiny hyperscript DOM builder (el / append / fill)
+    Component.hx   Stateful view base (mount / refresh / build)
+    Icons.hx       Inline SVG icons (Lucide-style) + Haxe logo
+    Data.hx        Mock data, types, and platform lookups
+    App.hx         Shell: nav, search, notifications, modal, routing
+    pages/         DashboardPage, CalendarPage, AnalyticsPage, SettingsPage
+    components/    HaxeCredit, PostCard, PlatformBadge
+styles/app.css     Tailwind v4 entry + design tokens (compiled to public/styles.css)
 public/            HTML and CSS copied into dist/
 dist/              Generated application output
 hmm.json           Project-local Haxelib dependencies
 package.json       Electron runtime and npm commands
 ```
+
+## UI
+
+The renderer is a modular port of the "Postiz Desktop" social dashboard:
+a top nav bar with Dashboard, Calendar, Analytics, and Settings pages, plus a
+notifications panel and a new-post modal. Each page is a `Component` that owns
+its own state and re-renders in place; the design tokens live in
+`styles/app.css` and surface as Tailwind utilities (`bg-card`, `text-accent`,
+`font-display`, …).
 
 The BrowserWindow uses `contextIsolation: true`, `nodeIntegration: false`,
 and sandboxing. Add a narrow preload bridge before exposing any native

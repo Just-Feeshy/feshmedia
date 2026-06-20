@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
     <head>
         <meta charset="utf-8" />
         <meta
@@ -8,72 +8,19 @@
         />
         <meta
             http-equiv="Content-Security-Policy"
-            content="default-src 'self'; script-src 'self'; style-src 'self'"
+            content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:"
         />
-        <title>Feshmedia</title>
+        <title>Postiz Desktop</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
         <link rel="stylesheet" href="styles.css" />
     </head>
-    <body class="min-h-screen m-0 grid grid-rows-[1fr_auto] bg-base font-sans text-ink">
-        <main
-            class="m-auto w-[min(1120px,100%)] grid items-center gap-12 px-7 py-16 sm:gap-[clamp(48px,8vw,104px)] sm:px-[clamp(28px,7vw,88px)] lg:grid-cols-[minmax(0,1.45fr)_minmax(260px,0.75fr)]"
-        >
-            <section aria-labelledby="title">
-                <p class="m-0 mb-[18px] font-mono text-xs font-bold uppercase tracking-[0.16em] text-accent">
-                    Haxe desktop starter
-                </p>
-                <h1
-                    id="title"
-                    class="m-0 text-[clamp(48px,7vw,82px)] font-bold leading-[0.96] tracking-[-0.055em]"
-                >
-                    One codebase.<br />A real desktop app.
-                </h1>
-                <p class="mt-7 mb-0 max-w-[640px] text-[17px] leading-[1.7] text-muted">
-                    HXP coordinates the build, hxelectron provides typed Electron
-                    APIs, and HMM keeps every Haxe dependency local and repeatable.
-                </p>
-                <div class="mt-[34px] flex flex-col items-start gap-[18px] sm:flex-row sm:items-center">
-                    <button
-                        id="action"
-                        type="button"
-                        class="cursor-pointer rounded-full border-0 bg-accent px-5 py-[13px] font-sans font-bold text-ink-on-accent transition duration-[120ms] ease-in-out hover:-translate-y-px hover:bg-accent-strong active:translate-y-px focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-ink"
-                    >
-                        Test renderer
-                    </button>
-                    <p id="status" aria-live="polite" class="m-0 text-[13px] text-subtle">
-                        Ready for your application code.
-                    </p>
-                </div>
-            </section>
-
-            <aside
-                class="overflow-hidden rounded-[20px] border border-white/10 bg-panel shadow-[0_30px_80px_rgb(0_0_0/0.3)]"
-                aria-label="Technology stack"
-            >
-                <article class="grid min-h-[88px] grid-cols-[36px_1fr] content-center border-b border-white/8 px-5 py-[18px] last:border-b-0">
-                    <span class="row-span-2 font-mono text-xs text-accent">01</span>
-                    <strong class="text-base">Haxe</strong>
-                    <small class="mt-[3px] text-faint">Application language</small>
-                </article>
-                <article class="grid min-h-[88px] grid-cols-[36px_1fr] content-center border-b border-white/8 px-5 py-[18px] last:border-b-0">
-                    <span class="row-span-2 font-mono text-xs text-accent">02</span>
-                    <strong class="text-base">HXP</strong>
-                    <small class="mt-[3px] text-faint">Build orchestration</small>
-                </article>
-                <article class="grid min-h-[88px] grid-cols-[36px_1fr] content-center border-b border-white/8 px-5 py-[18px] last:border-b-0">
-                    <span class="row-span-2 font-mono text-xs text-accent">03</span>
-                    <strong class="text-base">hxelectron</strong>
-                    <small class="mt-[3px] text-faint">Typed desktop APIs</small>
-                </article>
-                <article class="grid min-h-[88px] grid-cols-[36px_1fr] content-center border-b border-white/8 px-5 py-[18px] last:border-b-0">
-                    <span class="row-span-2 font-mono text-xs text-accent">04</span>
-                    <strong class="text-base">HMM</strong>
-                    <small class="mt-[3px] text-faint">Local dependencies</small>
-                </article>
-            </aside>
-        </main>
-        <footer class="px-7 py-5 text-center text-xs text-footer">
-            Feshmedia <span id="year"></span>
-        </footer>
+    <body class="bg-background text-foreground font-sans">
+        <div id="app"></div>
         <script src="renderer.js"></script>
     </body>
 </html>
