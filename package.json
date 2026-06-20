@@ -5,13 +5,17 @@
   "main": "dist/main.js",
   "private": true,
   "scripts": {
-    "build": "haxelib run hxp build",
+    "build:css": "tailwindcss -i ./styles/app.css -o ./public/styles.css --minify",
+    "build": "npm run build:css && haxelib run hxp build",
     "clean": "haxelib run hxp clean",
+    "watch:css": "tailwindcss -i ./styles/app.css -o ./public/styles.css --watch",
     "start": "npm run build && electron .",
     "dev": "npm run build && electron . --enable-logging"
   },
   "devDependencies": {
-    "electron": "40.10.4"
+    "@tailwindcss/cli": "^4.3.1",
+    "electron": "40.10.4",
+    "tailwindcss": "^4.3.1"
   },
   "engines": {
     "node": ">=20"

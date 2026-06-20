@@ -13,30 +13,67 @@
         <title>Feshmedia</title>
         <link rel="stylesheet" href="styles.css" />
     </head>
-    <body>
-        <main class="shell">
-            <section class="hero" aria-labelledby="title">
-                <p class="eyebrow">Haxe desktop starter</p>
-                <h1 id="title">One codebase.<br />A real desktop app.</h1>
-                <p class="lede">
+    <body class="min-h-screen m-0 grid grid-rows-[1fr_auto] bg-base font-sans text-ink">
+        <main
+            class="m-auto w-[min(1120px,100%)] grid items-center gap-12 px-7 py-16 sm:gap-[clamp(48px,8vw,104px)] sm:px-[clamp(28px,7vw,88px)] lg:grid-cols-[minmax(0,1.45fr)_minmax(260px,0.75fr)]"
+        >
+            <section aria-labelledby="title">
+                <p class="m-0 mb-[18px] font-mono text-xs font-bold uppercase tracking-[0.16em] text-accent">
+                    Haxe desktop starter
+                </p>
+                <h1
+                    id="title"
+                    class="m-0 text-[clamp(48px,7vw,82px)] font-bold leading-[0.96] tracking-[-0.055em]"
+                >
+                    One codebase.<br />A real desktop app.
+                </h1>
+                <p class="mt-7 mb-0 max-w-[640px] text-[17px] leading-[1.7] text-muted">
                     HXP coordinates the build, hxelectron provides typed Electron
                     APIs, and HMM keeps every Haxe dependency local and repeatable.
                 </p>
-                <div class="actions">
-                    <button id="action" type="button">Test renderer</button>
-                    <p id="status" aria-live="polite">Ready for your application code.</p>
+                <div class="mt-[34px] flex flex-col items-start gap-[18px] sm:flex-row sm:items-center">
+                    <button
+                        id="action"
+                        type="button"
+                        class="cursor-pointer rounded-full border-0 bg-accent px-5 py-[13px] font-sans font-bold text-ink-on-accent transition duration-[120ms] ease-in-out hover:-translate-y-px hover:bg-accent-strong active:translate-y-px focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-ink"
+                    >
+                        Test renderer
+                    </button>
+                    <p id="status" aria-live="polite" class="m-0 text-[13px] text-subtle">
+                        Ready for your application code.
+                    </p>
                 </div>
             </section>
 
-            <aside class="stack" aria-label="Technology stack">
-                <article><span>01</span><strong>Haxe</strong><small>Application language</small></article>
-                <article><span>02</span><strong>HXP</strong><small>Build orchestration</small></article>
-                <article><span>03</span><strong>hxelectron</strong><small>Typed desktop APIs</small></article>
-                <article><span>04</span><strong>HMM</strong><small>Local dependencies</small></article>
+            <aside
+                class="overflow-hidden rounded-[20px] border border-white/10 bg-panel shadow-[0_30px_80px_rgb(0_0_0/0.3)]"
+                aria-label="Technology stack"
+            >
+                <article class="grid min-h-[88px] grid-cols-[36px_1fr] content-center border-b border-white/8 px-5 py-[18px] last:border-b-0">
+                    <span class="row-span-2 font-mono text-xs text-accent">01</span>
+                    <strong class="text-base">Haxe</strong>
+                    <small class="mt-[3px] text-faint">Application language</small>
+                </article>
+                <article class="grid min-h-[88px] grid-cols-[36px_1fr] content-center border-b border-white/8 px-5 py-[18px] last:border-b-0">
+                    <span class="row-span-2 font-mono text-xs text-accent">02</span>
+                    <strong class="text-base">HXP</strong>
+                    <small class="mt-[3px] text-faint">Build orchestration</small>
+                </article>
+                <article class="grid min-h-[88px] grid-cols-[36px_1fr] content-center border-b border-white/8 px-5 py-[18px] last:border-b-0">
+                    <span class="row-span-2 font-mono text-xs text-accent">03</span>
+                    <strong class="text-base">hxelectron</strong>
+                    <small class="mt-[3px] text-faint">Typed desktop APIs</small>
+                </article>
+                <article class="grid min-h-[88px] grid-cols-[36px_1fr] content-center border-b border-white/8 px-5 py-[18px] last:border-b-0">
+                    <span class="row-span-2 font-mono text-xs text-accent">04</span>
+                    <strong class="text-base">HMM</strong>
+                    <small class="mt-[3px] text-faint">Local dependencies</small>
+                </article>
             </aside>
         </main>
-        <footer>Feshmedia <span id="year"></span></footer>
+        <footer class="px-7 py-5 text-center text-xs text-footer">
+            Feshmedia <span id="year"></span>
+        </footer>
         <script src="renderer.js"></script>
     </body>
 </html>
-

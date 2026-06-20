@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+/* Scan the renderer markup for class usage. */
+@source "../public/index.html";
+
+/* Design tokens — exposed as Tailwind utilities (bg-*, text-*, border-*). */
+@theme {
+    --color-base: #07111f;
+    --color-surface: #0b1728;
+    --color-panel: rgb(8 21 36 / 0.72);
+
+    --color-ink: #f2f6fa;
+    --color-ink-on-accent: #06110e;
+
+    --color-muted: #9eb0c4;
+    --color-subtle: #7f93aa;
+    --color-faint: #778da5;
+    --color-footer: #526b83;
+
+    --color-accent: #43e0b5;
+    --color-accent-strong: #70edca;
+
+    --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@layer base {
+    html {
+        color-scheme: dark;
+        font-synthesis: none;
+    }
+
+    body {
+        background:
+            radial-gradient(circle at 20% 15%, rgb(51 219 173 / 0.14), transparent 32rem),
+            linear-gradient(135deg, #07111f 0%, #0b1728 100%);
+    }
+}
