@@ -6,18 +6,6 @@ import hxp.Script;
 import hxp.System;
 import sys.FileSystem;
 
-/**
-	HXP build script for Feshmedia. Run with `haxelib run hxp`, which discovers
-	this `Project.hxp` automatically and dispatches on the command name:
-
-		haxelib run hxp          # build everything (default)
-		haxelib run hxp build    # same as above
-		haxelib run hxp clean    # remove the dist/ output
-
-	Replaces the previous `source/tasks/Build.hx` task and the standalone
-	`build-main.hxml` / `build-renderer.hxml` files: the Haxe targets are now
-	described inline through HXP's `HXML` builder.
-**/
 class Project extends Script
 {
 	public function new()
