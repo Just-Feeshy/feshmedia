@@ -1,0 +1,6 @@
+.DS_Store
+.haxelib/
+dist/
+node_modules/
+npm-debug.log*
+

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'; style-src 'self'"
+        />
+        <title>Feshmedia</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <main class="shell">
+            <section class="hero" aria-labelledby="title">
+                <p class="eyebrow">Haxe desktop starter</p>
+                <h1 id="title">One codebase.<br />A real desktop app.</h1>
+                <p class="lede">
+                    HXP coordinates the build, hxelectron provides typed Electron
+                    APIs, and HMM keeps every Haxe dependency local and repeatable.
+                </p>
+                <div class="actions">
+                    <button id="action" type="button">Test renderer</button>
+                    <p id="status" aria-live="polite">Ready for your application code.</p>
+                </div>
+            </section>
+
+            <aside class="stack" aria-label="Technology stack">
+                <article><span>01</span><strong>Haxe</strong><small>Application language</small></article>
+                <article><span>02</span><strong>HXP</strong><small>Build orchestration</small></article>
+                <article><span>03</span><strong>hxelectron</strong><small>Typed desktop APIs</small></article>
+                <article><span>04</span><strong>HMM</strong><small>Local dependencies</small></article>
+            </aside>
+        </main>
+        <footer>Feshmedia <span id="year"></span></footer>
+        <script src="renderer.js"></script>
+    </body>
+</html>
+

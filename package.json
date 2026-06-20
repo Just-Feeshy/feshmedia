@@ -1,0 +1,18 @@
+{
+  "name": "feshmedia",
+  "version": "0.1.0",
+  "description": "A Haxe desktop starter using HXP, hxelectron, and HMM",
+  "main": "dist/main.js",
+  "private": true,
+  "scripts": {
+    "build": "haxe -lib hxp -cp source/tasks --run Build",
+    "start": "npm run build && electron .",
+    "dev": "npm run build && electron . --enable-logging"
+  },
+  "devDependencies": {
+    "electron": "40.10.4"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
